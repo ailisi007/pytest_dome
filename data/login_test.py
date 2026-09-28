@@ -1,0 +1,32 @@
+login_test_data = [
+    {
+        "id":"test001",
+        "description":"正确用户名+正确密码+正确验证码=登陆成功",
+        "username":"admin",
+        "password":"HM_2023_test",
+        "code_type":"correct",
+        "expected_code":200,
+        "expected_msg":"操作成功",
+        "check_token":True
+    },
+    {
+        "id":"test002",
+        "description":"正确用户名+错误密码+正确验证码=登陆失败",
+        "username":"admin",
+        "password":"aaa",
+        "code_type":"correct",
+        "expected_code":500,
+        "expected_msg":"用户不存在/密码错误",
+        "check_token":False
+    },
+    {
+        "id":"test003",
+        "description":"错误用户名+正确密码+正确验证码=登陆失败",
+        "username":"admin999",
+        "password":"HM_2023_test",
+        "code_type":"correct",
+        "expected_code":500,
+        "expected_msg":"用户不存在/密码错误",
+        "check_token":False
+    }
+]
