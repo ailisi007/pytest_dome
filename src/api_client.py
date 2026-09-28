@@ -24,7 +24,6 @@ class AIPClient:
 
     def get_captcha(self):
         """获取验证码。
-
         返回：response（requests 的响应对象）
         响应体里主要有两个字段：
           - uuid：本次验证码的唯一标识（登录时要一起提交）
