@@ -11,7 +11,7 @@ conftest.py —— pytest 的「共享夹具」文件
   - 测试方法只要在参数里写上 fixture 的名字，pytest 就会自动把它的返回值传进来。
 """
 import pytest  # 导入测试框架
-from src.course_src import AIPClient  # 导入我们封装的 API 客户端类
+from src.api_client import AIPClient   # 导入我们封装的 API 客户端类
 
 
 # ==================== 夹具1：客户端 ====================
@@ -59,8 +59,6 @@ def logged_in_client(client, captcha_info):
     # 2) 业务层成功；失败时断言会报错，并显示服务器返回的原因
     assert data["code"] == 200, f"登陆失败：{data.get('msg')}"
 
-    # 把登录返回的 token 存到客户端，后续请求会自动带上登录态
-    client.set_token(data["token"])
     print(f"\n自动登陆成功，token:{client.token[:30]}...")  # 打印 token 前 30 个字符
 
     return client  # 返回已登录的客户端
