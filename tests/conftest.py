@@ -1,17 +1,8 @@
 # -*- coding: utf-8 -*-
-"""
-conftest.py —— pytest 的「共享夹具」文件
-========================================
-什么是 conftest.py？
-  - 放在测试目录下，pytest 会自动加载它。
-  - 里面定义的 fixture（夹具）可以被同目录下所有测试文件直接使用，不需要 import。
 
-什么是 fixture（夹具）？
-  - 就是「测试前的准备工作」：准备客户端、登录、造数据等等。
-  - 测试方法只要在参数里写上 fixture 的名字，pytest 就会自动把它的返回值传进来。
-"""
 import pytest  # 导入测试框架
 from src.api_client import AIPClient   # 导入我们封装的 API 客户端类
+import allure
 
 
 # ==================== 夹具1：客户端 ====================
@@ -60,7 +51,8 @@ def logged_in_client(client, captcha_info):
     assert data["code"] == 200, f"登陆失败：{data.get('msg')}"
 
     print(f"\n自动登陆成功，token:{client.token[:30]}...")  # 打印 token 前 30 个字符
-
+    # 在 logged_in_client 夹具里，打印 token 之后加上：
+    allure.attach(client.token, name="登录Token", attachment_type=allure.attachment_type.TEXT)
     return client  # 返回已登录的客户端
 
 

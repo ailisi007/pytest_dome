@@ -1,16 +1,28 @@
-# 这是一个示例 Python 脚本。
+import subprocess
+import sys
+from pathlib import Path
 
-# 按 Shift+F10 执行或将其替换为您的代码。
-# 按 双击 Shift 在所有地方搜索类、文件、工具窗口、操作和设置。
+BASE_DIR = Path(__file__).resolve().parent
+RESULTS = BASE_DIR / "reports" / "allure-results"
+REPORT_DIR = BASE_DIR / "reports" / "allure-report"
 
+# ⚠️ 改成你实际安装的 Allure 路径（你环境变量配的是这个）
+ALLURE_PATH = r"D:\Allure\allure-2.46.1\bin\allure.bat"
 
-def print_hi(name):
-    # 在下面的代码行中使用断点来调试脚本。
-    print(f'Hi, {name}')  # 按 Ctrl+F8 切换断点。
+def main():
+    # 确保目录存在
+    RESULTS.mkdir(parents=True, exist_ok=True)
+    REPORT_DIR.mkdir(parents=True, exist_ok=True)
 
+    print("正在执行测试...")
+    # pytest.ini 已经配置了 --alluredir，这里直接跑 pytest 就行
+    subprocess.run([sys.executable, "-m", "pytest"], cwd=BASE_DIR)
 
-# 按装订区域中的绿色按钮以运行脚本。
-if __name__ == '__main__':
-    print_hi('PyCharm')
+    print("正在生成报告...")
+    subprocess.run(f'"{ALLURE_PATH}" generate "{RESULTS}" -o "{REPORT_DIR}" --clean', cwd=BASE_DIR, shell=True)
 
+    print("正在打开报告...")
+    subprocess.run(f'"{ALLURE_PATH}" open "{REPORT_DIR}"', cwd=BASE_DIR, shell=True)
 
+if __name__ == "__main__":
+    main()
