@@ -31,6 +31,8 @@ jobs:
 
       # 第4步：运行测试，生成 allure 结果数据
       - name: Run tests
+        env:
+          PYTHONPATH: ${{ github.workspace }}
         run: pytest --alluredir=./allure-results
 
       # 第5步：安装 allure 命令行工具（生成 HTML 报告需要它）
