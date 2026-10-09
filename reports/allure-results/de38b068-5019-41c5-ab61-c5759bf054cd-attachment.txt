@@ -1,0 +1,5 @@
+
+自动登陆成功，token:eyJhbGciOiJIUzUxMiJ9.eyJsb2dpb...
+
+执行测试用例：TEST_CLUE_ADD_001 - 正常插入线索--成功
+ 用例 TEST_CLUE_ADD_001 通过!

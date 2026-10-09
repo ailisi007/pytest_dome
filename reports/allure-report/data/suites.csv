@@ -1,0 +1,10 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"查询线索用例。","3543","TEST_CLUE_QUERY_001 - 查询所有线索--成功（不传手机号）","tests","2026-09-29","passed","2026-09-29","TestClueQuery","test_clue_data_driven","",""
+"新增课程用例。
+
+参数（都由 pytest 自动注入）：
+  logged_in_client：conftest.py 里定义好的「已登录客户端」夹具
+  test_case        ：一条测试数据（一个字典）
+","339","test_add_course_data_driven[test_case0]","tests","2026-09-29","passed","2026-09-29","TestCourseAdd","test_course_data_driven","",""
+"查询线索用例。","168","TEST_CLUE_QUERY_002 - 按手机号查询线索--成功","tests","2026-09-29","failed","2026-09-29","TestClueQuery","test_clue_data_driven","",""
+"插入线索用例。","190","TEST_CLUE_ADD_001 - 正常插入线索--成功","tests","2026-09-29","passed","2026-09-29","TestClueAdd","test_clue_data_driven","",""

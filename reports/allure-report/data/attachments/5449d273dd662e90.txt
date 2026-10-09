@@ -1,0 +1,10 @@
+
+自动登陆成功，token:eyJhbGciOiJIUzUxMiJ9.eyJsb2dpb...
+
+============================================================
+执行测试用例：TEST_COURSE_ADD_001-正常添加课程--成功
+请求参数：{'name': '自动化测试实战课', 'subject': '6', 'price': 900, 'applicableperson': '2', 'info': '从零开始学习自动化测试'}
+响应数据：{'msg': '操作成功', 'code': 200}
+✅ 断言通过: code=200, msg=操作成功
+✅ 验证通过: 课程已存在，ID=26242
+✅ 用例 TEST_COURSE_ADD_001 通过!
